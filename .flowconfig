@@ -1,0 +1,16 @@
+[ignore]
+<PROJECT_ROOT>/coverage/.*
+<PROJECT_ROOT>/node_modules/babel.*
+<PROJECT_ROOT>/node_modules/\.cache/.*
+<PROJECT_ROOT>/node_modules/.*/test/.*
+<PROJECT_ROOT>/node_modules/.*/tests/.*
+
+[include]
+
+[libs]
+flow-typed
+
+[lints]
+all=warn
+
+[options]

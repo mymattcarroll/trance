@@ -1,0 +1,72 @@
+{
+  "name": "trance",
+  "description": "(Nine Challenge + Transform Data) ===  (Final Fantasy IX + Transform Zidane) === Trance",
+  "version": "1.0.0",
+  "author": "Matt Carroll <matt.carroll139@gmail.com> (https://github.com/mymattcarroll)",
+  "bugs": {
+    "url": "https://git.blinkm.co/OneBlink/api/issues"
+  },
+  "contributors": [
+    "Matt Carroll <matt.carroll139@gmail.com> (https://github.com/mymattcarroll)"
+  ],
+  "dependencies": {
+    "boom": "7.2.0",
+    "dotenv": "5.0.1",
+    "express": "4.16.3",
+    "joi": "13.3.0",
+    "morgan": "1.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "fixpack": "^2.3.1",
+    "flow-bin": "^0.73.0",
+    "jest": "^23.0.0",
+    "remark-cli": "^5.0.0",
+    "remark-lint": "^6.0.1",
+    "remark-preset-lint-recommended": "^3.0.1",
+    "request": "^2.87.0"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=6"
+  },
+  "homepage": "https://github.com/mymattcarroll/trance",
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "lines": 75
+      }
+    }
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mymattcarroll/trance.git"
+  },
+  "scripts": {
+    "deploy": "node ./scripts/deploy.js",
+    "eslint": "eslint --fix --cache .",
+    "fixpack": "fixpack",
+    "flow_check": "flow check",
+    "init-db": "node scripts/init-db.js",
+    "jest": "jest",
+    "lint-md": "remark . --use remark-preset-lint-recommended",
+    "pretest": "npm run eslint && npm run flow_check && npm run fixpack && npm run lint-md",
+    "start": "node --trace-deprecation --trace-warnings ./index.js",
+    "test": "npm run jest"
+  }
+}

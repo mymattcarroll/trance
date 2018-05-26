@@ -1,0 +1,8 @@
+node_modules/
+coverage
+.eslintcache
+npm-debug.log
+.DS_Store
+
+# dotenv files for running locally
+.env

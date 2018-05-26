@@ -1,0 +1,20 @@
+language: node_js
+sudo: false
+node_js:
+  - '8'
+install:
+  - npm install --global npm
+  - npm install
+script:
+  - npm test
+deploy:
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: mymattcarroll-trance-test
+    on:
+      branch: master
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    app: mymattcarroll-trance
+    on:
+      tags: true
