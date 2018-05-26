@@ -6,7 +6,7 @@
 
 ## Running Locally
 
-1.  Create the following `.env` file in the `./lib` directory (this file is intentionally ignored by git)
+1.  Create the following `.env` file in the root directory of this repository (this file is intentionally ignored by git)
 
     ```
     PORT=4000
