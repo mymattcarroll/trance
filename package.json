@@ -1,7 +1,7 @@
 {
   "name": "trance",
   "description": "(Nine Challenge + Transform Data) ===  (Final Fantasy IX + Transform Zidane) === Trance",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "author": "Matt Carroll <matt.carroll139@gmail.com> (https://github.com/mymattcarroll)",
   "bugs": {
     "url": "https://git.blinkm.co/OneBlink/api/issues"
@@ -58,11 +58,9 @@
     "url": "git+https://github.com/mymattcarroll/trance.git"
   },
   "scripts": {
-    "deploy": "node ./scripts/deploy.js",
     "eslint": "eslint --fix --cache .",
     "fixpack": "fixpack",
     "flow_check": "flow check",
-    "init-db": "node scripts/init-db.js",
     "jest": "jest",
     "lint-md": "remark . --use remark-preset-lint-recommended",
     "pretest": "npm run eslint && npm run flow_check && npm run fixpack && npm run lint-md",
