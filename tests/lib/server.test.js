@@ -21,14 +21,75 @@ describe('server.js', () => {
       .then(() => done())
   })
 
-  test('A missing endpoint should return 404 response', (done) => {
+  test('A request to a missing endpoint should return 404 response', (done) => {
     baseRequest('/path/does/not/exist', (error, response, body) => {
       expect(error).toBeFalsy()
+      expect(response.statusCode).toBe(404)
       expect(body).toEqual({
-        error: 'Not Found',
-        message: 'Endpoint does not exist',
-        statusCode: 404
+        error: 'Endpoint does not exist'
       })
+      done()
+    })
+  })
+
+  test('A GET request an existing endpoint should return a 405 response', (done) => {
+    baseRequest('/', (error, response, body) => {
+      expect(error).toBeFalsy()
+      expect(response.statusCode).toBe(405)
+      expect(body).toEqual({
+        error: 'GET method has not been implemented for endpoint'
+      })
+      done()
+    })
+  })
+
+  test('An POST request with a invalid JSON should return a 400 response', (done) => {
+    baseRequest.post('/', {
+      body: 'heres a bunch of stuff that should not be JSON parsable'
+    }, (error, response, body) => {
+      expect(error).toBeFalsy()
+      expect(response.statusCode).toBe(400)
+      expect(body).toBeDefined()
+      expect(body.error).toContain('Could not decode request: JSON parsing failed')
+      done()
+    })
+  })
+
+  test('An POST request with no "payload" property should return a 400 response', (done) => {
+    baseRequest.post('/', {
+      body: {}
+    }, (error, response, body) => {
+      expect(error).toBeFalsy()
+      expect(response.statusCode).toBe(400)
+      expect(body).toEqual({
+        error: 'Invalid request payload'
+      })
+      done()
+    })
+  })
+
+  test('An POST request with an invalid "payload" property should return a 400 response', (done) => {
+    baseRequest.post('/', {
+      body: {
+        payload: 123
+      }
+    }, (error, response, body) => {
+      expect(error).toBeFalsy()
+      expect(response.statusCode).toBe(400)
+      expect(body).toEqual({
+        error: 'Invalid request payload'
+      })
+      done()
+    })
+  })
+
+  test('A POST request with the example JSON should return the example response JSON', (done) => {
+    baseRequest.post('/', {
+      json: require('../fixtures/example-request.json')
+    }, (error, response, body) => {
+      expect(error).toBeFalsy()
+      expect(response.statusCode).toBe(200)
+      expect(body).toEqual(require('../fixtures/example-response.json'))
       done()
     })
   })
